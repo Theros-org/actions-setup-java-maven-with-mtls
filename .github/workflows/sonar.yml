@@ -1,0 +1,21 @@
+name: SonarQube
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  SonarQube:
+    runs-on: [self-hosted,ts-m-large-x64]
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - name: fetching
+        if: contains(github.ref, 'pull')
+        run: |
+          git fetch origin ${{ github.event.pull_request.head.sha }}
+          git checkout ${{ github.event.pull_request.head.sha }}
+      - name: SonarQube Scan
+        uses: tradeshift/actions-sonarqube@v2
+        with:
+          token: ${{ secrets.SONAR_TOKEN }}
