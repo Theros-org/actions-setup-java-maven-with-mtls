@@ -1,0 +1,51 @@
+name: Setup Java, Maven, and Configure Maven
+description: Sets up Java, Maven, and configures Maven certificates in one step.
+inputs:
+  java-version:
+    description: 'The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file'
+    required: true
+  distribution:
+    description: 'Java distribution. See the list of supported distributions in README file'
+    required: true
+  maven-version:
+    description: 'Version Spec of the version to use. Examples: 10.x, 10.15.1, >=10.15.0'
+    required: true
+  maven-settings:
+    description: 'Content of the maven configuration settings file in base64 format'
+    required: true
+  maven-security:
+    description: 'Content of the maven configuration security settings file in base64 format'
+    required: true
+  maven-p12:
+    description: 'Base64 encoded content of p12 keystore file used for accessing the private remote maven repository'
+    required: true
+  maven-p12-password:
+    description: 'Base64 encoded password to access the p12 maven keystore'
+    required: true
+  mtls-cacert:
+    description: "Base64 encoded content of company's root CA certificate"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: ${{ inputs.java-version }}
+        distribution: ${{ inputs.distribution }}
+      id: setup-java
+
+    - name: Set up Maven
+      uses: tradeshift/actions-setup-maven@v4.5
+      with:
+        maven-version: ${{ inputs.maven-version }}
+
+    - name: Configure Maven
+      uses: tradeshift/actions-setup-java-mtls@master
+      with:
+        java-version: ${{ inputs.java-version }}
+        maven-settings: ${{ inputs.maven-settings }}
+        maven-security: ${{ inputs.maven-security }}
+        maven-p12: ${{ inputs.maven-p12 }}
+        maven-p12-password: ${{ inputs.maven-p12-password }}
+        mtls-cacert: ${{ inputs.mtls-cacert }}
