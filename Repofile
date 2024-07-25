@@ -1,0 +1,1 @@
+{"description": "Composite action that puts together actions/setup-java, tradeshift/actions-setup-maven and tradeshift/actions-setup-java-mtls. Making GHA workflows for Java projects more terse.", "maintainers": ["sre"], "checks": ["build", "SonarQube"]}
