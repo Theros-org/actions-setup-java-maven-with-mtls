@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup Java, Maven, and Configure Maven
-        uses: tradeshift/setup-java-maven-with-mtls@v1
+        uses: tradeshift/actions-setup-java-maven-with-mtls@v1
         with:
           java-version: 17
           distribution: 'zulu'
