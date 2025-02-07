@@ -36,12 +36,12 @@ runs:
       id: setup-java
 
     - name: Set up Maven
-      uses: tradeshift/actions-setup-maven@v4.5
+      uses: theros-org/actions-setup-maven@v4.5
       with:
         maven-version: ${{ inputs.maven-version }}
 
     - name: Configure Maven
-      uses: tradeshift/actions-setup-java-mtls@master
+      uses: theros-org/actions-setup-java-mtls@master
       with:
         java-version: ${{ inputs.java-version }}
         maven-settings: ${{ inputs.maven-settings }}

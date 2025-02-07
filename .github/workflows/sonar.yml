@@ -7,7 +7,7 @@ on:
 
 jobs:
   SonarQube:
-    runs-on: [self-hosted,ts-m-large-x64]
+    runs-on: [self-hosted,ts-medium-x64-docker]
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: fetching
@@ -16,6 +16,6 @@ jobs:
           git fetch origin ${{ github.event.pull_request.head.sha }}
           git checkout ${{ github.event.pull_request.head.sha }}
       - name: SonarQube Scan
-        uses: tradeshift/actions-sonarqube@v2
+        uses: theros-org/actions-sonarqube@v1
         with:
           token: ${{ secrets.SONAR_TOKEN }}

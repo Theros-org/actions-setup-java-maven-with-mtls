@@ -4,8 +4,8 @@
 
 This GitHub Action composite action sets up Java, Maven, and configures Maven to use client mTLS authentication. It combines the functionality of the following actions:
 - [actions/setup-java](https://github.com/actions/setup-java)
-- [tradeshift/actions-setup-maven](https://github.com/Tradeshift/actions-setup-maven)
-- [tradeshift/actions-setup-java-mtls](https://github.com/tradeshift/actions-setup-java-mtls)
+- [tradeshift/actions-setup-maven](https://github.com/Theros-org/actions-setup-maven)
+- [tradeshift/actions-setup-java-mtls](https://github.com/Theros-org/actions-setup-java-mtls)
 
 By encapsulating these steps, this action streamlines the setup process for Java projects, making GitHub Actions workflows more concise and easier to manage.
 
@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup Java, Maven, and Configure Maven
-        uses: tradeshift/actions-setup-java-maven-with-mtls@v1
+        uses: theros-org/actions-setup-java-maven-with-mtls@v1
         with:
           java-version: 17
           distribution: 'zulu'

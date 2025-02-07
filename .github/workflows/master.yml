@@ -5,12 +5,12 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted, ts-m-x-small-x64-docker-small]
+    runs-on: [self-hosted, ts-small-x64-docker-small]
     # Run on non-fork branches only
     if: ${{ !github.event.fork }}
     steps:
       - uses: actions/checkout@v4
-      - uses: tradeshift/actions-semantic-release@v2
+      - uses: theros-org/actions-semantic-release@v1
         id: semantic-release
         with:
           check_name: Semantic release
