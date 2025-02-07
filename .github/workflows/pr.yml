@@ -3,7 +3,7 @@ on: [pull_request]
 
 jobs:
   build:
-    runs-on: [self-hosted, ts-small-x64-docker-small]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:

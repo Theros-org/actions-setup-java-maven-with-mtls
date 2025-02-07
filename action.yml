@@ -28,17 +28,16 @@ inputs:
   include-maven-toolchains:
     description: 'Include maven toolchains.xml file'
     required: false
-    default: 'false' 
+    default: 'false'
 runs:
   using: "composite"
   steps:
     - name: Setup Java
+      id: setupJava
       uses: actions/setup-java@v4
       with:
         java-version: ${{ inputs.java-version }}
         distribution: ${{ inputs.distribution }}
-      id: setup-java
-
     - name: Set up Maven
       uses: theros-org/actions-setup-maven@v4.5
       with:

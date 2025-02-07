@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted, ts-small-x64-docker-small]
+    runs-on: ubuntu-latest
     # Run on non-fork branches only
     if: ${{ !github.event.fork }}
     steps:
