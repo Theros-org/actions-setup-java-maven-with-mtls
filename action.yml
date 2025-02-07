@@ -25,6 +25,10 @@ inputs:
   mtls-cacert:
     description: "Base64 encoded content of company's root CA certificate"
     required: true
+  include-maven-toolchains:
+    description: 'Include maven toolchains.xml file'
+    required: false
+    default: 'false' 
 runs:
   using: "composite"
   steps:
@@ -39,7 +43,6 @@ runs:
       uses: theros-org/actions-setup-maven@v4.5
       with:
         maven-version: ${{ inputs.maven-version }}
-
     - name: Configure Maven
       uses: theros-org/actions-setup-java-mtls@master
       with:
@@ -49,3 +52,12 @@ runs:
         maven-p12: ${{ inputs.maven-p12 }}
         maven-p12-password: ${{ inputs.maven-p12-password }}
         mtls-cacert: ${{ inputs.mtls-cacert }}
+    - name: Setup toolchain
+      if: ${{ inputs.include-maven-toolchains == 'true' }}
+      uses: theros-org/maven-toolchains-xml-action@v1
+      with:
+        toolchains: |
+          [
+            {"jdkVersion": "${{steps.setupJava.outputs.version}}", "jdkHome": "${{steps.setupJava.outputs.path}}"}
+          ]
+
