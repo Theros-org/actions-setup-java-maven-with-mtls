@@ -1,14 +1,14 @@
 # This file contains metadata for backstage
 # Read more about available fields and annotations:
-# https://github.com/tradeshift/backstage
+# https://github.com/theros-org/backstage
 #
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: actions-setup-java-maven-with-mtls
-  description: "Composite action that puts together actions/setup-java, tradeshift/actions-setup-maven and tradeshift/actions-setup-java-mtls. Making GHA workflows for Java projects more terse."
+  description: "Composite action that puts together actions/setup-java, theros-org/actions-setup-maven and theros-org/actions-setup-java-mtls. Making GHA workflows for Java projects more terse."
   annotations:
-    github.com/project-slug: Tradeshift/actions-setup-java-maven-with-mtls
+    github.com/project-slug: Theros-org/actions-setup-java-maven-with-mtls
 spec:
   type: other
   lifecycle: experimental
