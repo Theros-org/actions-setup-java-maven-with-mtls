@@ -55,7 +55,7 @@ jobs:
           maven-p12: ${{ secrets.MAVEN_P12 }}
           maven-p12-password: ${{ secrets.MAVEN_P12_PASSWORD }}
           mtls-cacert: ${{ secrets.MTLS_CACERT }}
-          include-maven-toolchains: 'true' # optional
+          include-maven-toolchains: true # optional, default false
 
       - name: Build with Maven
         run: mvn clean install
