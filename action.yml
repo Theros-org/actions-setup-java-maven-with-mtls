@@ -44,7 +44,7 @@ runs:
       with:
         maven-version: ${{ inputs.maven-version }}
     - name: Configure Maven
-      uses: theros-org/actions-setup-java-mtls@master
+      uses: theros-org/actions-setup-java-mtls@v1
       with:
         java-version: ${{ inputs.java-version }}
         maven-settings: ${{ inputs.maven-settings }}
@@ -52,7 +52,7 @@ runs:
         maven-p12: ${{ inputs.maven-p12 }}
         maven-p12-password: ${{ inputs.maven-p12-password }}
         mtls-cacert: ${{ inputs.mtls-cacert }}
-    - name: Setup toolchain
+    - name: Setup Maven toolchains.xml
       if: ${{ inputs.include-maven-toolchains == 'true' }}
       uses: theros-org/maven-toolchains-xml-action@v1
       with:
