@@ -9,7 +9,7 @@ jobs:
     # Run on non-fork branches only
     if: ${{ !github.event.fork }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: theros-org/actions-semantic-release@v1
         id: semantic-release
         with:
